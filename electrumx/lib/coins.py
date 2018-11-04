@@ -2151,3 +2151,25 @@ class tBitg(Bitg):
     GENESIS_HASH = (
         '000008467c3a9c587533dea06ad9380cded3ed32f9742a6c0c1aebc21bf2bc9b')
     RPC_PORT = 19332
+
+class Suqa(Coin):
+    NAME = "Suqa"
+    SHORTNAME = "SUQA"
+    NET = "mainnet"
+    XPUB_VERBYTES = bytes.fromhex("0488B21E")
+    XPRV_VERBYTES = bytes.fromhex("0488ADE4")
+    P2SH_VERBYTES = [bytes.fromhex("05")]
+    P2PKH_VERBYTE = bytes.fromhex("3F")
+    WIF_BYTE = bytes.fromhex("BF")
+    GENESIS_HASH = ('000032bd27c65ec42967b7854a49df22'
+                    '2abdfae8d9350a61083af8eab2a25e03')
+    TX_COUNT = 62867
+    TX_COUNT_HEIGHT = 24262
+    TX_PER_BLOCK = 3
+    RPC_PORT = 20971
+
+    @classmethod
+    def header_hash(cls, header):
+        '''Given a header return the hash.'''
+        import x22i_hash
+        return x22i_hash.getPoWHash(header)
